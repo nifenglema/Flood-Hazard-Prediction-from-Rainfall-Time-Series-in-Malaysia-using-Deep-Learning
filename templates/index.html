@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainfall-Based Flood Hazard Forecasting in Malaysia Using Deep Learning</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Leaflet JS Map Engine -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    
+    <!-- Dynamic Atmospheric Background -->
+    <div class="weather-bg"></div>
+    <div class="glass-overlay"></div>
+
+    <main class="container">
+        
+        <!-- Header -->
+        <header class="app-header">
+            <h1 class="gradient-text">Rainfall-Based Flood Hazard Forecasting in Malaysia Using Deep Learning</h1>
+            <p class="subtitle">15-Day Roll-Forward Forecasting</p>
+        </header>
+        
+        <!-- Dashboard Control Panel -->
+        <section class="glass-panel control-panel">
+            <div class="input-group">
+                <label for="locationSelect">Select Region</label>
+                <div class="custom-select">
+                    <select id="locationSelect">
+                        <option value="Malaysia">Malaysia (National Average)</option>
+                        <option value="Johor">Johor</option>
+                        <option value="Kuala Lumpur">Kuala Lumpur</option>
+                        <option value="Kelantan">Kelantan</option>
+                        <option value="Pahang">Pahang</option>
+                        <option value="Terengganu">Terengganu</option>
+                        
+                        <!-- Extra states fallback logically to basic weather metrics -->
+                        <option value="Selangor">Selangor</option>
+                        <option value="Penang">Penang</option>
+                        <option value="Sabah">Sabah</option>
+                        <option value="Sarawak">Sarawak</option>
+                        <option value="Melaka">Melaka</option>
+                    </select>
+                </div>
+            </div>
+            <button id="runForecastBtn" class="primary-btn">
+                <span class="btn-text">Generate Flood Forecast</span>
+                <div class="spinner"></div>
+            </button>
+        </section>
+        
+        <!-- Interactive Geographic Map -->
+        <section id="interactiveMap" class="glass-panel map-container"></section>
+        
+        <!-- Loading Alert State -->
+        <div id="loaderStatus" class="status-msg hidden">
+            <p>Fetching Visual Crossing API sequences & running Tensor Analysis...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="errorZone" class="error-msg hidden"></div>
+
+        <!-- Results Display Grid -->
+        <section id="resultsGrid" class="results-grid hidden">
+            <!-- Dynamically populated via JS -->
+        </section>
+
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
