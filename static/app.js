@@ -19,15 +19,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const stateCoords = {
         "Malaysia": [4.2105, 101.9758],
         "Johor": [1.4854, 103.7618],
-        "Kuala Lumpur": [3.1390, 101.6869],
+        "Kedah": [6.1184, 100.3685],
         "Kelantan": [6.1254, 102.2381],
+        "Melaka": [2.1896, 102.2501],
+        "Negeri Sembilan": [2.7258, 101.9424],
         "Pahang": [3.8126, 103.3256],
-        "Terengganu": [5.3117, 103.1324],
-        "Selangor": [3.0738, 101.5183],
         "Penang": [5.4141, 100.3288],
+        "Perak": [4.5975, 101.0901],
+        "Perlis": [6.4449, 100.2048],
+        "Selangor": [3.0738, 101.5183],
+        "Terengganu": [5.3117, 103.1324],
         "Sabah": [5.9788, 116.0753],
-        "Sarawak": [1.5533, 110.3592],
-        "Melaka": [2.1896, 102.2501]
+        "Sarawak": [1.5533, 110.3592]
     };
 
     // Instantiate Interactive Markers
@@ -125,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="stat">
                         <span class="stat-val">${day.precip}</span>
-                        <span class="stat-label">Rain (mm)</span>
+                        <span class="stat-label">Rain (inch)</span>
                     </div>
                     <div class="stat">
                         <span class="stat-val">${Math.round(day.humidity)}%</span>

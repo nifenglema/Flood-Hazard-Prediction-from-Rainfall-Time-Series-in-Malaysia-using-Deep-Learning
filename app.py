@@ -123,11 +123,15 @@ def get_forecast():
         
         target_forecast_day = df_api.iloc[i + window_size]
         
+        # Convert metric precipitation (mm) to inches for the frontend display
+        precip_mm = target_forecast_day.get('precip', 0)
+        precip_in = precip_mm / 25.4 if precip_mm else 0.0
+        
         predictions.append({
             "datetime": target_forecast_day['datetime'],
             "temp": target_forecast_day.get('temp', 0),
             "humidity": target_forecast_day.get('humidity', 0),
-            "precip": target_forecast_day.get('precip', 0),
+            "precip": round(precip_in, 3), # Return as inches
             "alert": target_forecast_day.get('conditions', 'Unknown'),
             "flood_prob": float(probs[1]) * 100 # percentage scale
         })
